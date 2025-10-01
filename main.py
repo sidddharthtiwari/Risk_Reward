@@ -30,7 +30,7 @@ def calculate_risk_reward(avg_price, max_against_price, target_price, tick_size,
     reward_from_price = price_movement_reward * no_of_lots * tick_value
     
     # Transaction costs and rebates are same for both risk and reward
-    total_reward = reward_from_price + transaction_cost - rebate_benefit
+    total_reward = reward_from_price - transaction_cost + rebate_benefit
     
     return total_risk, total_reward
 
@@ -231,8 +231,8 @@ def main():
             'Reward Calculation': [
                 "-",
                 format_currency(price_movement_reward_value),
-                format_currency(transaction_cost_value),
-                format_currency(-rebate_value),
+                format_currency(-transaction_cost_value),
+                format_currency(rebate_value),
                 "-",
                 format_currency(reward)
             ]
